@@ -28,6 +28,7 @@ function check_files(files, defaults) {
 }
 
 describe('metalsmith-updated', function() {
+  
   it('should annotate new files with the default parameters', function(done) {
     var defaults = _.clone(updated.defaults);
     var test_defaults = updated.processConfig(defaults, path.join(src, 'src'));
@@ -62,6 +63,7 @@ describe('metalsmith-updated', function() {
         done();
       });
   });
+  
   it('should ignore drafts with the default parameters', function(done) {
     var defaults = _.clone(updated.defaults);
     var test_defaults = updated.processConfig(defaults, path.join(src, 'src'));
@@ -100,6 +102,7 @@ describe('metalsmith-updated', function() {
         done();
       });
   });
+  
   it('should include files based on patterns', function(done) {
     var defaults = _.clone(updated.defaults);
     defaults.filePatterns = ["*.html"];
@@ -138,6 +141,7 @@ describe('metalsmith-updated', function() {
         done();
       });
   });
+  
   it('annotate not update unchanged files with the default parameters', function(done) {
     var defaults = _.clone(updated.defaults);
     var test_defaults = updated.processConfig(defaults, path.join(src, 'src'));
@@ -206,6 +210,7 @@ describe('metalsmith-updated', function() {
         done();
       });
   });
+  
   it('should not override explicit dates', function(done) {
     var defaults = _.clone(updated.defaults);
     defaults.filePatterns = ["*.html"];
@@ -294,4 +299,25 @@ describe('metalsmith-updated', function() {
         done();
       });
   });
+
+  it('should allow the path to the json file to be absolute', function(done){
+
+    const files = {
+      'one.html': {
+        contents: "Lorem ipsum."
+      }
+    }
+
+    const outsidePath = path.resolve(__dirname, "..", "config", ".updated.json");
+
+    updated({
+      updatedFile: outsidePath
+    })(files, metalsmith(__dirname), function(){
+      const updatedFile = fs.readFileSync(outsidePath);
+
+      assert(files['one.html']['updated'] !== undefined)
+      assert(updatedFile !== undefined)
+    });
+    done();
+  })
 });
