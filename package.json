@@ -1,5 +1,5 @@
 {
-  "name": "bemetalsmith-updated",
+  "name": "@bentley/bemetalsmith-updated",
   "version": "0.2.0",
   "description": "Metalsmith plugin for adding created and updated attributes to files.",
   "readmeFilename": "README.md",
