@@ -3,6 +3,12 @@
 This is a plugin for [Metalsmith](http://metalsmith.io) that adds created and
 updated attributes to files based on cached information saved in a file.
 
+## FORK!
+
+The intention of this fork is to allow for non-relative file paths when determining the location of the .updated.json file. In adapting the plugin for use in a Continuous Delivery environment, the .updated.json needs to be saved somewhere after updating. However, in a CD environment where a build job pulls from version control, it's not advisable (and in some cases - Microsoft TFS 2015 - not possible) to write the updated file back to the version control repository.
+
+One alternative is to read to and write from the file on the deployment server we deploy our built code to.
+
 ## Installation
 
 This module is released via npm, install the latest released version with:
