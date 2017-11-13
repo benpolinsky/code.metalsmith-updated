@@ -1,6 +1,6 @@
 {
-  "name": "metalsmith-updated",
-  "version": "0.1.6",
+  "name": "bemetalsmith-updated",
+  "version": "0.2.0",
   "description": "Metalsmith plugin for adding created and updated attributes to files.",
   "readmeFilename": "README.md",
   "bugs": {
@@ -19,8 +19,8 @@
     "metalsmith"
   ],
   "author": {
-    "name": "Geoffrey Challen",
-    "email": "challen@buffalo.edu"
+    "name": "Geoffrey Challen / Modified by Ben Polinsky",
+    "email": "challen@buffalo.edu / benjamin.polinsky@gmail.com"
   },
   "license": "MIT",
   "dependencies": {
